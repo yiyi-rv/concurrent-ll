@@ -12,7 +12,8 @@ compiler=kcc
 sudo make -j`nproc` CC=$compiler LD=$compiler CFLAGS=-fissue-report=$error_file 
 rm $error_file
 
-## `pwd`/lua -e "print(\"Hello, World!\")"
+./rvscripts/rv0.sh
+
 
 # Generate a HTML report with `rv-html-report` command,
 # and output the HTML report to `./report` directory. 
