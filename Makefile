@@ -92,9 +92,15 @@ bench: $(EXEC)
 	bash scripts/run_ll.sh
 	bash scripts/create_plots_ll.sh >/dev/null
 	@echo Check the plots generated in directory 'out/plots'.
-
+#
+# RV additions for rv-predict demo
+#
+rv0: $(EXEC)
+	echo "rv0 "
+	bash rvscripts/rv0.sh
 clean:
 	$(RM) -f $(EXEC)
+	$(RM) -f a.out
 	$(RM) -f $(LOCK_OBJS) $(LOCKFREE_OBJS) $(deps)
 
 distclean: clean

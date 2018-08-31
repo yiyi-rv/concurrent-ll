@@ -13,37 +13,45 @@
  *  - (un)set_marked changes the mark,
  *  - get_(un)marked_ref sets the mark before returning the node.
  */
+
+
+
+
+
 static inline
-int is_marked_ref(long i)
+int is_marked_ref(node_t* i)
 {
-    return (int)(i & 0x1L);
+    return (int)( ((long)i) & 0x1L);
 }
 
 static inline
-long unset_mark(long i)
+node_t* unset_mark(node_t* i)
 {
-    i &= ~0x1L;
+    //i=((long)i) & ~0x1L;
+    i=(node_t*) ( ( (long)i)  & ~0x1L);
     return i;
 }
 
 static inline
-long set_mark(long i)
+node_t* set_mark(node_t* i)
 {
-    i |= 0x1L;
-    return i;
+     i=(node_t*) ( ( (long)i)  | 0x1L);
+     return i;
+     
 }
 
 static inline
-long get_unmarked_ref(long w)
+node_t* get_unmarked_ref(node_t* w)
 {
-    return w & ~0x1L;
+    return (node_t*) ( ((long)w) & ~0x1L);
 }
 
 static inline
-long get_marked_ref(long w)
+node_t* get_marked_ref(node_t* w)
 {
-    return w | 0x1L;
+    return (node_t*) ( ((long)w) | 0x1L);
 }
+
 
 /*
  * list_search looks for value val, it
