@@ -96,8 +96,10 @@ bench: $(EXEC)
 # RV additions for rv-predict demo
 #
 rv0: $(EXEC)
-	echo "rv0 "
-	bash rvscripts/rv0.sh
+	out/test-lock -n3;out/test-lockfree -n3
+
+#	bash rvscripts/rv0.sh
+
 clean:
 	$(RM) -f $(EXEC)
 	$(RM) -f a.out

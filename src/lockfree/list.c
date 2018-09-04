@@ -21,21 +21,20 @@
 static inline
 int is_marked_ref(node_t* i)
 {
-    return (int)( ((long)i) & 0x1L);
+    return (int)( ((uintptr_t)i) & 0x1L);
 }
 
 static inline
 node_t* unset_mark(node_t* i)
 {
-    //i=((long)i) & ~0x1L;
-    i=(node_t*) ( ( (long)i)  & ~0x1L);
+    i=(node_t*) ( ( (uintptr_t)i)  & ~0x1L);
     return i;
 }
 
 static inline
 node_t* set_mark(node_t* i)
 {
-     i=(node_t*) ( ( (long)i)  | 0x1L);
+     i=(node_t*) ( ( (uintptr_t)i)  | 0x1L);
      return i;
      
 }
@@ -43,13 +42,13 @@ node_t* set_mark(node_t* i)
 static inline
 node_t* get_unmarked_ref(node_t* w)
 {
-    return (node_t*) ( ((long)w) & ~0x1L);
+    return (node_t*) ( ((uintptr_t)w) & ~0x1L);
 }
 
 static inline
 node_t* get_marked_ref(node_t* w)
 {
-    return (node_t*) ( ((long)w) | 0x1L);
+    return (node_t*) ( ((uintptr_t)w) | 0x1L);
 }
 
 

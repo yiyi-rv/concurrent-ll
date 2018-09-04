@@ -1,14 +1,13 @@
 #!/bin/sh
 set -x # print debug info
 
-        # junk line inserted to make a git push, push -Carloon 
 # This is running under Ubuntu 16.04
 # Install necessary packages. 
 sudo apt-get install -y libreadline-dev
 
 # Compile and run `lua`.
 error_file=`pwd`/my_errors.json
-compiler=kcc
+compiler=rvpc
 sudo make -j`nproc` CC=$compiler LD=$compiler CFLAGS=-fissue-report=$error_file 
 rm $error_file
 
