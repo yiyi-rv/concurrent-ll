@@ -4,13 +4,12 @@ json_out=`pwd`/my_errors.json
 report_out=`pwd`/report
 
 # Install necessary packages 
-sudo apt-get install -y libreadline-dev bc
+apt install -y libreadline-dev bc
 
 # Compile and run
-compiler=rvpc
 export RVP_ANALYSIS_ARGS="--output=json" 
 export RVP_REPORT_FILE=$json_out
-sudo make -j`nproc` CC=$compiler LD=$compiler 
+make -j`nproc` CC=rvpc
 rm $json_out
 
 ./rvscripts/rv0.sh
