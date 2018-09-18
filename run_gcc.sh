@@ -1,2 +1,2 @@
 #!/bin/bash
-./scripts/test_correctness.sh
+./rvscripts/rv0.sh
