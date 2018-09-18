@@ -111,7 +111,7 @@ void *test(void *data)
     uint32_t read_thresh = 256 * finds / 100;
     uint32_t rand_max;
     // seed the custom random number generator
-    seeds = seed_rand();
+    seeds = yiyi_seed_rand();
     rand_max = max_key;
     uint32_t op;
     val_t the_value;

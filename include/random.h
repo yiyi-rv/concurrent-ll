@@ -43,6 +43,17 @@ unsigned long *seed_rand()
     return seeds;
 }
 
+static inline
+unsigned long *yiyi_seed_rand()
+{
+    unsigned long *seeds;
+    seeds = (unsigned long *)memalign(64, 64);
+    seeds[0] = 16387575;
+    seeds[1] = 256656994;
+    seeds[2] = 501352646;
+    return seeds;
+}
+
 /* Marsaglia's xorshf generator */
 static inline
 unsigned long xorshf96(unsigned long *x,

@@ -41,7 +41,7 @@ def measure_time(script=[], init_script=[], prerun_script=[], postrun_script=[],
             subprocess.call(final_script)
     return timestamp
 
-iteration = 5
+iteration = 6
 t0 = measure_time(script=["./compile_gcc.sh"], init_script=["make", "clean"], postrun_script=["make", "clean"], iteration=iteration)
 t1 = measure_time(script=["./compile_rvpc.sh"], postrun_script=["make", "clean"], iteration=iteration)
 t2 = measure_time(script=["./run_gcc.sh"], init_script=["./compile_gcc.sh"], final_script=["make", "clean"], iteration=iteration)
