@@ -27,11 +27,11 @@ def measure_time(script="", init_script="", prerun_script="", postrun_script="",
 
     return timestamp
 
-
-print("GCC - Compile time (second): " + str(measure_time(script="./compile_gcc.sh", prerun_script=["make", "clean"])))
-print("RVPC - Compile time (second): " + str(measure_time(script="./compile_rvpc.sh", prerun_script=["make", "clean"])))
+print("Performance measurement - 20 iterations")
+print("GCC - Compile time (second/iter): " + str(measure_time(script="./compile_gcc.sh", postrun_script=["make", "clean"])))
+print("RVPC - Compile time (second/iter): " + str(measure_time(script="./compile_rvpc.sh", postrun_script=["make", "clean"])))
 print("--------------")
-print("GCC - Execution time (second): " + str(measure_time(script="./run_gcc.sh", init_script="./compile_gcc.sh", final_script=["make", "clean"])))
-print("RVPC - tracing to /dev/null - Execution time (second): " + str(measure_time(script="./run_rvpc_no_trace", init_script="./compile_rvpc.sh", final_script=["make", "clean"])))
-print("RVPC - tracing to ./trace   - Execution time (second): " + str(measure_time(script="./run_rvpc_trace", init_script="./compile_rvpc.sh", prerun_script="rm ./trace", final_script=["make", "clean"])))
+print("GCC - Execution time (second/iter): " + str(measure_time(script="./run_gcc.sh", init_script="./compile_gcc.sh", final_script=["make", "clean"])))
+print("RVPC - no analysis, tracing to /dev/null - Execution time (second/iter): " + str(measure_time(script="./run_rvpc_no_trace.sh", init_script="./compile_rvpc.sh", final_script=["make", "clean"])))
+print("RVPC - no analysis, tracing to ./trace   - Execution time (second/iter): " + str(measure_time(script="./run_rvpc_trace.sh", init_script="./compile_rvpc.sh", prerun_script="rm ./trace", final_script=["make", "clean"])))
 
